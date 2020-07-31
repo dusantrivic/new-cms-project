@@ -3,7 +3,7 @@
 @section('content')
 
 <h1 class="my-4">Page Heading
-    <small>Secondary Text</small>
+    <small>Secondary Text sa dusan grane</small>
   </h1>
  @foreach($posts as $post)
   <!-- Blog Post -->
