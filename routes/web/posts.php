@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Role;
 use Illuminate\Support\Facades\Route;
 
@@ -12,6 +13,9 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/posts/{post}/destroy','PostController@destroy')->name('post.destroy');
     Route::patch('/posts/{post}/update','PostController@update')->name('post.update');
     Route::get('/posts/{post}/edit','PostController@edit')->middleware('can:view,post')->name('post.edit');
+    Route::put('/post/{post}/likes','PostController@like')->name('post.like');
+    Route::put('/post/{post}/dislikes','PostController@dislike')->name('post.dislike');
+
 });
 
 

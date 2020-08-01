@@ -84,5 +84,23 @@ class PostController extends Controller
         return $image;
 
     }
+    public function like(Post $post){
 
+        $post->likes=$post->likes + 1;
+        $this->authorize('like',$post);
+        $post->update();
+        auth()->user()->likes()->attach(request('like'));
+
+        return redirect()->route('home');
+
+    }
+    public function dislike(Post $post){
+
+        $post->likes=$post->likes - 1;
+        $this->authorize('like',$post);
+        $post->update();
+        auth()->user()->likes()->detach(request('like'));
+        return redirect()->route('home');
+
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Post;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class PostPolicy
 {
@@ -57,7 +58,11 @@ class PostPolicy
         //
         return $user->id===$post->user_id;
     }
-
+    public function like(User $user, Post $post)
+    {
+        //
+        return Auth::check();
+    }
     /**
      * Determine whether the user can delete the model.
      *
